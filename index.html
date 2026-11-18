@@ -99,7 +99,7 @@
       color: #e1e6fc;
       font-size: clamp(1rem, 1.65vw, 1.12rem);
     }
-    .project-link {
+    .research-link {
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
@@ -111,7 +111,7 @@
       font-weight: 720;
       text-decoration: none;
     }
-    .project-link:hover { background: #fff; }
+    .research-link:hover { background: #fff; }
 
     .flow {
       padding: clamp(1.15rem, 3.1vw, 2.25rem);
@@ -194,25 +194,25 @@
     }
     .interest-list h3 { margin-bottom: 0.45rem; color: var(--blue); font-size: 1.06rem; }
     .interest-list li:last-child h3 { color: var(--violet); }
-    .interest-list p, .work-card p { color: var(--muted); }
+    .interest-list p, .research-entry p { color: var(--muted); }
 
-    .work-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.25rem;
-      padding-bottom: clamp(2.5rem, 5.2vw, 4.2rem);
-    }
-    .work-card {
-      padding: clamp(1.3rem, 3.4vw, 2.2rem);
+    .research { padding-bottom: clamp(2.5rem, 5.2vw, 4.2rem); }
+    .research-list {
+      margin-top: 1.25rem;
+      padding-inline: clamp(1.15rem, 3.25vw, 2.15rem);
       border: 1px solid #d9e0f7;
       border-radius: 0.85rem;
-      background: #eef1ff;
+      background: #eef1ff linear-gradient(110deg, #eef1ff, #f2eeff);
     }
-    .work-card.project { border-color: #e3dcf6; background: #f2eeff; }
-    .work-card h2 { margin-bottom: 0.72rem; color: var(--blue); font-size: 0.94rem; }
-    .work-card.project h2 { color: var(--violet); }
-    .work-card h3 { font-size: clamp(1.3rem, 2.55vw, 1.8rem); }
-    .work-card p { margin-top: 0.72rem; }
+    .research-entry {
+      display: grid;
+      grid-template-columns: minmax(10rem, 0.78fr) minmax(0, 1.22fr);
+      align-items: start;
+      gap: clamp(0.6rem, 3vw, 2.1rem);
+      padding-block: clamp(1.1rem, 2.8vw, 1.75rem);
+    }
+    .research-entry + .research-entry { border-top: 1px solid #d9dff2; }
+    .research-entry h3 { font-size: clamp(1.15rem, 2.25vw, 1.5rem); }
 
     .competition { padding-bottom: clamp(2.5rem, 5vw, 4.3rem); }
     .achievement {
@@ -261,8 +261,9 @@
         padding-block: 0.85rem;
       }
       .nav { grid-column: 1 / -1; grid-row: 2; justify-content: start; gap: 0.4rem 1.25rem; }
-      .interest-list, .work-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .interest-list { grid-template-columns: 1fr; gap: 0.8rem; }
       .interest-list li { padding: 1rem 1.05rem; }
+      .research-entry { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -274,7 +275,6 @@
       <nav class="nav" aria-label="页面导航">
         <a href="#interests">关注方向</a>
         <a href="#research">研究</a>
-        <a href="#projects">项目</a>
         <a href="#competition">竞赛</a>
       </nav>
       <a class="github" href="https://github.com/SLOTH212">GitHub <span aria-hidden="true">↗</span></a>
@@ -290,8 +290,8 @@
             <strong>厦门大学马来西亚分校（XMUM）</strong>
             <div><a href="https://www.xmu.edu.my/SCDS">计算与数据科学学院</a> · 2025 级</div>
           </div>
-          <p class="intro">我研究语言模型如何理解长文本，以及怎样在阅读过程中适应新的输入。</p>
-          <a class="project-link" href="#projects">查看项目 <span aria-hidden="true">↓</span></a>
+          <p class="intro">我的主要研究方向是 <strong lang="en">Test Time Training</strong>，关注语言模型如何在阅读长文本时适应新的输入。</p>
+          <a class="research-link" href="#research">查看研究 <span aria-hidden="true">↓</span></a>
         </div>
         <figure class="flow">
           <figcaption>长文档理解</figcaption>
@@ -320,12 +320,12 @@
         <h2 class="section-title" id="interests-heading">关注方向</h2>
         <ul class="interest-list">
           <li>
-            <h3>长上下文理解</h3>
-            <p>从长篇输入中定位关键信息，完成检索与问答。</p>
+            <h3 lang="en">Test Time Training</h3>
+            <p>研究模型在推理时如何利用当前输入进行适应。</p>
           </li>
           <li>
-            <h3>测试时训练</h3>
-            <p>研究模型在推理时如何利用当前输入进行适应。</p>
+            <h3>长上下文理解</h3>
+            <p>从长篇输入中定位关键信息，完成检索与问答。</p>
           </li>
           <li>
             <h3>持续学习</h3>
@@ -334,18 +334,19 @@
         </ul>
       </section>
 
-      <div class="work-grid">
-        <section class="work-card" id="research" aria-labelledby="research-heading">
-          <h2 id="research-heading">研究</h2>
-          <h3>长上下文中的动态更新</h3>
-          <p>测试时训练（TTT）让语言模型在处理输入时临时调整参数。我研究模型在长文本的不同片段上应何时更新、更新哪些层，以及简单的切换策略能在多大程度上改善任务表现。</p>
-        </section>
-        <section class="work-card project" id="projects" aria-labelledby="projects-heading">
-          <h2 id="projects-heading">在做的项目</h2>
-          <h3>长文档中的持续适应</h3>
-          <p>我在探索语言模型如何适应不断变化的文档与任务，并关注它们在连续阅读和问答中的表现。</p>
-        </section>
-      </div>
+      <section class="research" id="research" aria-labelledby="research-heading">
+        <h2 class="section-title" id="research-heading">研究</h2>
+        <div class="research-list">
+          <article class="research-entry">
+            <h3>长上下文中的动态更新</h3>
+            <p>测试时训练（TTT）让语言模型在处理输入时临时调整参数。我研究模型在长文本的不同片段上应何时更新、更新哪些层，以及简单的切换策略能在多大程度上改善任务表现。</p>
+          </article>
+          <article class="research-entry" id="projects">
+            <h3>长文档中的持续适应</h3>
+            <p>我在探索语言模型如何适应不断变化的文档与任务，并关注它们在连续阅读和问答中的表现。</p>
+          </article>
+        </div>
+      </section>
 
       <section class="competition" id="competition" aria-labelledby="competition-heading">
         <h2 class="section-title" id="competition-heading">竞赛经历</h2>
