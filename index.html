@@ -180,7 +180,7 @@
     .section-title { font-size: clamp(1.5rem, 3.4vw, 2.15rem); letter-spacing: -0.025em; }
     .interest-list {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1rem;
       margin-top: 1.25rem;
       padding: 0;
@@ -193,7 +193,7 @@
       background: var(--white);
     }
     .interest-list h3 { margin-bottom: 0.45rem; color: var(--blue); font-size: 1.06rem; }
-    .interest-list li:last-child h3 { color: var(--violet); }
+    .interest-list li:nth-child(n+3) h3 { color: var(--violet); }
     .interest-list p, .research-entry p { color: var(--muted); }
 
     .research { padding-bottom: clamp(2.5rem, 5.2vw, 4.2rem); }
@@ -248,6 +248,9 @@
     }
     .footer a:hover { color: var(--blue); text-decoration: underline; }
 
+    @media (max-width: 60rem) {
+      .interest-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 52rem) {
       .hero { grid-template-columns: 1fr; }
       .flow { max-width: 34rem; }
@@ -331,6 +334,10 @@
             <h3>持续学习</h3>
             <p>任务变化时，如何学习新知识并保持已有能力。</p>
           </li>
+          <li>
+            <h3>智能体工具使用</h3>
+            <p>关注语言模型在不同任务中如何选择和调用工具。</p>
+          </li>
         </ul>
       </section>
 
@@ -344,6 +351,10 @@
           <article class="research-entry" id="projects">
             <h3>长文档中的持续适应</h3>
             <p>我在探索语言模型如何适应不断变化的文档与任务，并关注它们在连续阅读和问答中的表现。</p>
+          </article>
+          <article class="research-entry">
+            <h3>工具使用中的模型适应</h3>
+            <p>我在研究语言模型智能体能否根据工具交互的反馈调整决策，并把学到的使用经验用于新的任务。</p>
           </article>
         </div>
       </section>
