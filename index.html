@@ -8,226 +8,271 @@
   <style>
     :root {
       color-scheme: light;
-      --page: #f5f4ee;
-      --paper: #fcfbf7;
-      --ink: #192822;
-      --muted: #475850;
-      --accent: #205448;
-      --line: #d5dbd1;
-      --soft: #e9efe6;
-      --dark: #17352e;
-      --mint: #c4ebce;
+      --page: #f8f9ff;
+      --white: #fff;
+      --ink: #191d3e;
+      --muted: #4e5677;
+      --line: #dfe3f3;
+      --blue: #3649ac;
+      --violet: #6242a6;
+      --night: #202650;
+      --light: #f9f9ff;
       font-family: system-ui, "Microsoft YaHei", "PingFang SC", sans-serif;
       color: var(--ink);
       background: var(--page);
+      scroll-padding-top: 1.25rem;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; line-height: 1.65; }
-    h1, h2, h3, h4, p, figure { margin: 0; }
-    h1, h2, h3, h4 { line-height: 1.26; }
-    a { color: inherit; text-underline-offset: 0.23em; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-    a:hover { color: var(--accent); }
+    h1, h2, h3, p, figure, ul { margin: 0; }
+    h1, h2, h3 { line-height: 1.25; }
+    a { color: inherit; text-underline-offset: 0.25em; }
+    a:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .wrap { width: min(calc(100% - 3.25rem), 70rem); margin-inline: auto; }
 
-    .wrap { width: min(100% - 3rem, 72rem); margin-inline: auto; }
     .skip {
       position: absolute;
-      z-index: 2;
+      z-index: 1;
       top: 0.75rem;
       left: 0.75rem;
-      padding: 0.55rem 0.8rem;
-      transform: translateY(-180%);
-      background: var(--paper);
+      padding: 0.55rem 0.85rem;
+      transform: translateY(-200%);
+      background: var(--white);
     }
     .skip:focus { transform: none; }
 
-    .header { border-bottom: 1px solid var(--line); }
+    .masthead {
+      color: var(--light);
+      background: #242e66 linear-gradient(90deg, var(--night) 0%, #303e83 59%, #4f378f 100%);
+    }
+    .masthead a:focus-visible { outline-color: #e4e8ff; }
+    .header { border-bottom: 1px solid #e2e4ff25; }
     .header-inner {
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
       min-height: 4.5rem;
     }
     .brand, .nav a, .github, .footer a { text-decoration: none; }
-    .brand { justify-self: start; font-weight: 780; letter-spacing: -0.025em; }
-    .nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.55rem 1.8rem; }
-    .nav a, .footer a { color: var(--muted); }
-    .nav a:hover, .footer a:hover, .github:hover { color: var(--accent); text-decoration: underline; }
-    .github { justify-self: end; font-size: 0.94rem; font-weight: 650; }
+    .brand { justify-self: start; font-weight: 800; letter-spacing: -0.025em; }
+    .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.4rem 1.65rem; }
+    .nav a { color: #e3e5ff; font-size: 0.95rem; }
+    .nav a:hover { color: #fff; text-decoration: underline; }
+    .github {
+      justify-self: end;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid #dfe2ff55;
+      border-radius: 0.5rem;
+      color: #f2f3ff;
+      font-weight: 650;
+      white-space: nowrap;
+    }
+    .github:hover { background: #eef0ff24; }
 
-    .hero { border-bottom: 1px solid var(--line); }
-    .hero-inner {
+    .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+      grid-template-columns: minmax(0, 1.06fr) minmax(0, 1fr);
       align-items: center;
-      gap: clamp(2.25rem, 6vw, 6rem);
-      padding-block: clamp(3.35rem, 8vw, 7rem);
+      gap: clamp(2rem, 6vw, 5.5rem);
+      padding-block: clamp(3.5rem, 7.5vw, 6.5rem);
     }
     h1 {
-      font-size: clamp(3rem, 8.6vw, 7rem);
-      font-weight: 780;
-      line-height: 0.97;
-      letter-spacing: -0.072em;
+      font-size: clamp(3rem, 7.3vw, 6.15rem);
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.068em;
     }
     .affiliation {
-      margin-top: 1.8rem;
-      padding: 0.125rem 0 0.125rem 0.9rem;
-      border-left: 2px solid var(--accent);
-      font-size: 1rem;
+      margin-top: 1.55rem;
+      padding-left: 0.95rem;
+      border-left: 2px solid #a6b1f9;
+      color: #e2e6ff;
       line-height: 1.55;
     }
-    .affiliation strong { display: block; font-weight: 650; }
-    .affiliation div { color: var(--muted); }
+    .affiliation strong { display: block; color: var(--light); font-weight: 660; }
+    .affiliation a:hover { color: #fff; }
     .intro {
-      max-width: 36rem;
-      margin-top: 1.25rem;
-      font-size: clamp(1rem, 1.7vw, 1.15rem);
-      color: var(--muted);
+      max-width: 29rem;
+      margin-top: 1.18rem;
+      color: #e1e6fc;
+      font-size: clamp(1rem, 1.65vw, 1.12rem);
     }
     .project-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.65rem;
       margin-top: 1.65rem;
-      padding: 0.55rem 0.9rem;
-      border-radius: 0.32rem;
-      background: var(--accent);
-      color: white;
-      font-weight: 650;
+      padding: 0.63rem 1rem;
+      border-radius: 0.48rem;
+      background: #eaecff;
+      color: #252e69;
+      font-weight: 720;
       text-decoration: none;
     }
-    .project-link:hover { background: var(--dark); color: white; }
+    .project-link:hover { background: #fff; }
 
     .flow {
-      min-width: 0;
-      padding: clamp(1.25rem, 3.2vw, 2.35rem);
-      border: 1px solid #234a3e;
-      border-radius: 0.9rem;
-      color: #f2f8ef;
-      background-color: var(--dark);
-      background-image: linear-gradient(#f4fff211 1px, transparent 1px),
-                        linear-gradient(90deg, #f4fff211 1px, transparent 1px);
-      background-size: 1.75rem 1.75rem;
-      box-shadow: 0 0.8rem 1.9rem #19372b17;
+      padding: clamp(1.15rem, 3.1vw, 2.25rem);
+      border: 1px solid #b8c0ff66;
+      border-radius: 1rem;
+      background-color: #222957;
+      background-image: linear-gradient(#d7dcff12 1px, transparent 1px),
+                        linear-gradient(90deg, #d7dcff12 1px, transparent 1px),
+                        radial-gradient(ellipse at 72% 5%, #493d83, transparent 72%);
+      background-size: 1.6rem 1.6rem, 1.6rem 1.6rem, 100% 100%;
+      box-shadow: 0 1.2rem 2.7rem #14194145;
     }
-    .flow figcaption { font-size: clamp(1.13rem, 2.2vw, 1.52rem); font-weight: 650; }
+    .flow figcaption { font-size: clamp(1.1rem, 2.2vw, 1.45rem); font-weight: 700; }
     .steps {
       display: grid;
       grid-template-columns: 1fr auto 1fr auto 1fr;
       align-items: center;
-      gap: 0.35rem;
-      margin: 1.6rem 0 1.2rem;
+      gap: clamp(0.25rem, 0.9vw, 0.65rem);
+      margin-top: 1.45rem;
     }
     .step {
       display: grid;
       justify-items: center;
       align-content: center;
-      gap: 0.6rem;
+      gap: 0.7rem;
       min-width: 0;
-      min-height: 5.9rem;
-      padding: 0.55rem 0.2rem;
-      border: 1px solid #6c9781;
-      border-radius: 0.36rem;
-      background: #23443a;
-      color: #edf7ec;
-      font-size: 0.85rem;
-      font-weight: 630;
+      min-height: clamp(5.1rem, 9vw, 6.9rem);
+      padding: 0.5rem 0.2rem;
+      border: 1px solid #b8c5fa78;
+      border-radius: 0.55rem;
+      background: #333d72;
+      color: #f3f4ff;
+      font-size: clamp(0.77rem, 1.25vw, 0.9rem);
+      font-weight: 650;
       line-height: 1.25;
       text-align: center;
     }
-    .step.model { color: #18372b; background: var(--mint); border-color: var(--mint); }
-    .arrow { color: var(--mint); font-size: 0.95rem; }
+    .step.model {
+      color: #2a286c;
+      border-color: #c8cbff;
+      background: linear-gradient(135deg, #d5e2ff, #dccbff);
+    }
+    .arrow { color: #c8cbff; }
     .document-mark {
       display: grid;
-      gap: 0.19rem;
-      width: 1.25rem;
-      padding: 0.31rem 0.2rem;
+      gap: 0.2rem;
+      width: 1.35rem;
+      min-height: 1.35rem;
+      padding: 0.27rem 0.22rem;
       border: 1px solid currentColor;
-      border-radius: 0.15rem;
+      border-radius: 0.2rem;
     }
-    .document-mark span { height: 1px; width: 100%; background: currentColor; }
-    .document-mark span:last-child { width: 70%; }
+    .document-mark span { width: 100%; height: 1px; background: currentColor; }
+    .document-mark span:last-child { width: 68%; }
     .model-mark {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.19rem;
-      width: 1.25rem;
-      height: 1.25rem;
+      gap: 0.18rem;
+      width: 1.3rem;
+      height: 1.3rem;
     }
-    .model-mark span { border: 1px solid currentColor; border-radius: 0.08rem; }
+    .model-mark span { border: 1px solid currentColor; border-radius: 0.1rem; }
     .model-mark span:nth-child(2), .model-mark span:nth-child(3) { background: currentColor; }
-    .flow-note {
-      padding-top: 0.85rem;
-      border-top: 1px solid #b5dfc252;
-      color: #e2f0e2;
-      font-size: 0.91rem;
-    }
 
-    .band { padding-block: clamp(2.75rem, 6vw, 5.25rem); border-bottom: 1px solid var(--line); }
-    .research { background: var(--paper); }
-    .projects { background: var(--soft); }
-    .split {
+    .interests { padding-block: clamp(2.4rem, 5.8vw, 4.7rem) clamp(2rem, 4vw, 3rem); }
+    .section-title { font-size: clamp(1.5rem, 3.4vw, 2.15rem); letter-spacing: -0.025em; }
+    .interest-list {
       display: grid;
-      grid-template-columns: minmax(9rem, 0.48fr) minmax(0, 1.52fr);
-      align-items: start;
-      gap: clamp(1.25rem, 4vw, 4rem);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+      padding: 0;
+      list-style: none;
     }
-    .band h2 { font-size: clamp(1.25rem, 2.35vw, 1.8rem); }
-    .band h3 { font-size: clamp(1.35rem, 3vw, 2.1rem); font-weight: 720; }
-    .section-copy { max-width: 43rem; margin-top: 0.75rem; font-size: 1.03rem; color: var(--muted); }
-    .competition { background: var(--paper); }
+    .interest-list li {
+      padding: 1.2rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 0.7rem;
+      background: var(--white);
+    }
+    .interest-list h3 { margin-bottom: 0.45rem; color: var(--blue); font-size: 1.06rem; }
+    .interest-list li:last-child h3 { color: var(--violet); }
+    .interest-list p, .work-card p { color: var(--muted); }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+      padding-bottom: clamp(2.5rem, 5.2vw, 4.2rem);
+    }
+    .work-card {
+      padding: clamp(1.3rem, 3.4vw, 2.2rem);
+      border: 1px solid #d9e0f7;
+      border-radius: 0.85rem;
+      background: #eef1ff;
+    }
+    .work-card.project { border-color: #e3dcf6; background: #f2eeff; }
+    .work-card h2 { margin-bottom: 0.72rem; color: var(--blue); font-size: 0.94rem; }
+    .work-card.project h2 { color: var(--violet); }
+    .work-card h3 { font-size: clamp(1.3rem, 2.55vw, 1.8rem); }
+    .work-card p { margin-top: 0.72rem; }
+
+    .competition { padding-bottom: clamp(2.5rem, 5vw, 4.3rem); }
     .achievement {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 0.7rem 1.2rem;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.15rem;
+      padding: 1.05rem 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 0.7rem;
+      background: var(--white);
     }
-    .achievement h3 { font-size: clamp(1.12rem, 2.55vw, 1.55rem); }
+    .achievement h3 { font-size: clamp(1.02rem, 2.15vw, 1.28rem); overflow-wrap: anywhere; }
     .result {
-      padding: 0.25rem 0.75rem;
-      border: 1px solid #b6cbb9;
-      border-radius: 0.3rem;
-      background: var(--soft);
-      color: #224738;
-      font-size: 0.9rem;
-      font-weight: 720;
+      padding: 0.2rem 0.7rem;
+      border-radius: 0.32rem;
+      background: #ece8ff;
+      color: #4e347f;
+      font-size: 0.88rem;
+      font-weight: 750;
     }
 
+    .footer { border-top: 1px solid var(--line); }
     .footer .wrap {
       display: flex;
       justify-content: space-between;
       gap: 1rem;
-      padding-block: 1.45rem;
+      padding-block: 1.25rem;
       color: var(--muted);
-      font-size: 0.91rem;
+      font-size: 0.92rem;
     }
+    .footer a:hover { color: var(--blue); text-decoration: underline; }
 
     @media (max-width: 52rem) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .flow { max-width: 38rem; }
-      .split { grid-template-columns: 1fr; gap: 0.85rem; }
+      .hero { grid-template-columns: 1fr; }
+      .flow { max-width: 34rem; }
     }
-    @media (max-width: 36rem) {
+    @media (max-width: 42rem) {
       .wrap { width: calc(100% - 2rem); }
       .header-inner {
         grid-template-columns: 1fr auto;
-        min-height: 0;
-        gap: 0.6rem 1rem;
+        min-height: auto;
+        gap: 0.65rem 1rem;
         padding-block: 0.85rem;
       }
-      .nav { grid-column: 1 / -1; grid-row: 2; justify-content: start; }
+      .nav { grid-column: 1 / -1; grid-row: 2; justify-content: start; gap: 0.4rem 1.25rem; }
+      .interest-list, .work-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+      .interest-list li { padding: 1rem 1.05rem; }
     }
   </style>
 </head>
 <body id="top">
   <a class="skip" href="#main">跳到正文</a>
-  <header class="header">
+  <header class="header masthead">
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="SLOTH212，回到顶部">SLOTH212</a>
       <nav class="nav" aria-label="页面导航">
+        <a href="#interests">关注方向</a>
         <a href="#research">研究</a>
         <a href="#projects">项目</a>
         <a href="#competition">竞赛</a>
@@ -237,15 +282,15 @@
   </header>
 
   <main id="main">
-    <section class="hero" aria-labelledby="name">
-      <div class="wrap hero-inner">
+    <div class="masthead">
+      <section class="wrap hero" aria-labelledby="name">
         <div>
           <h1 id="name">SLOTH212</h1>
           <div class="affiliation">
             <strong>厦门大学马来西亚分校（XMUM）</strong>
             <div><a href="https://www.xmu.edu.my/SCDS">计算与数据科学学院</a> · 2025 级</div>
           </div>
-          <p class="intro">我关注长上下文语言模型的测试时训练与持续学习，研究模型如何在阅读过程中适应输入。</p>
+          <p class="intro">我研究语言模型如何理解长文本，以及怎样在阅读过程中适应新的输入。</p>
           <a class="project-link" href="#projects">查看项目 <span aria-hidden="true">↓</span></a>
         </div>
         <figure class="flow">
@@ -266,40 +311,50 @@
               <span>检索与问答</span>
             </div>
           </div>
-          <p class="flow-note">在较长的输入中定位关键信息，并用它回答问题。</p>
         </figure>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <section class="band research" id="research" aria-labelledby="research-heading">
-      <div class="wrap split">
-        <h2 id="research-heading">研究</h2>
-        <div>
+    <div class="wrap">
+      <section class="interests" id="interests" aria-labelledby="interests-heading">
+        <h2 class="section-title" id="interests-heading">关注方向</h2>
+        <ul class="interest-list">
+          <li>
+            <h3>长上下文理解</h3>
+            <p>从长篇输入中定位关键信息，完成检索与问答。</p>
+          </li>
+          <li>
+            <h3>测试时训练</h3>
+            <p>研究模型在推理时如何利用当前输入进行适应。</p>
+          </li>
+          <li>
+            <h3>持续学习</h3>
+            <p>任务变化时，如何学习新知识并保持已有能力。</p>
+          </li>
+        </ul>
+      </section>
+
+      <div class="work-grid">
+        <section class="work-card" id="research" aria-labelledby="research-heading">
+          <h2 id="research-heading">研究</h2>
           <h3>长上下文中的动态更新</h3>
-          <p class="section-copy">测试时训练（TTT）让语言模型在处理输入时临时调整参数。我研究模型在长文本的不同片段上应何时更新、更新哪些层，以及简单的切换策略能在多大程度上改善任务表现。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="band projects" id="projects" aria-labelledby="projects-heading">
-      <div class="wrap split">
-        <h2 id="projects-heading">在做的项目</h2>
-        <div>
+          <p>测试时训练（TTT）让语言模型在处理输入时临时调整参数。我研究模型在长文本的不同片段上应何时更新、更新哪些层，以及简单的切换策略能在多大程度上改善任务表现。</p>
+        </section>
+        <section class="work-card project" id="projects" aria-labelledby="projects-heading">
+          <h2 id="projects-heading">在做的项目</h2>
           <h3>长文档中的持续适应</h3>
-          <p class="section-copy">我在探索语言模型如何适应不断变化的文档与任务，并关注它们在连续阅读和问答中的表现。</p>
-        </div>
+          <p>我在探索语言模型如何适应不断变化的文档与任务，并关注它们在连续阅读和问答中的表现。</p>
+        </section>
       </div>
-    </section>
 
-    <section class="band competition" id="competition" aria-labelledby="competition-heading">
-      <div class="wrap split">
-        <h2 id="competition-heading">竞赛经历</h2>
+      <section class="competition" id="competition" aria-labelledby="competition-heading">
+        <h2 class="section-title" id="competition-heading">竞赛经历</h2>
         <div class="achievement" lang="en">
           <h3>Mercedes-Benz Tech Malaysia Vibathon 2026</h3>
           <span class="result">Finalist</span>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
