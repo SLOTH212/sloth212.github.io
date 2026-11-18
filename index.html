@@ -33,12 +33,34 @@
       color: #1b4eb4;
       text-underline-offset: 0.2em;
     }
+    section {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #dbe4ee;
+    }
+    h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1.125rem;
+      line-height: 1.35;
+    }
+    section p {
+      margin: 0;
+      color: #38475e;
+    }
   </style>
 </head>
 <body>
   <main>
     <h1>你好，我是 SLOTH212</h1>
     <a href="https://github.com/SLOTH212">查看我的 GitHub 资料</a>
+    <section aria-labelledby="research-heading">
+      <h2 id="research-heading">研究方向</h2>
+      <p>我研究长上下文语言模型的测试时训练（TTT），探索模型如何在处理长文本时临时调整参数。我关注何时更新、更新哪些层，以及简单的更新策略能带来多大收益。</p>
+    </section>
+    <section aria-labelledby="competition-heading">
+      <h2 id="competition-heading">竞赛经历</h2>
+      <p lang="en">Mercedes-Benz Tech Malaysia Vibathon 2026 — <strong>Finalist</strong></p>
+    </section>
   </main>
 </body>
 </html>
